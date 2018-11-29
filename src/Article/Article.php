@@ -23,7 +23,7 @@ final class Article
      * @param string             $body
      * @param \DateTimeImmutable $creationDate
      */
-    public function __construct(int $id, string $title, string $body, \DateTimeImmutable $creationDate)
+    public function __construct(int $id, Title $title, string $body, \DateTimeImmutable $creationDate)
     {
         $this->title = $title;
         $this->body = $body;
