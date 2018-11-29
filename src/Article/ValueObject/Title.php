@@ -1,35 +1,42 @@
 <?php
 
-namespace LaravelDay\Article\ValueObject\Title;
+declare(strict_types=1);
 
-use LaravelDay\Article\ValueObject\TitleTooShort;
+namespace LaravelDay\Article\ValueObject;
 
-class Title {
+use LaravelDay\Article\ValueObject\Exception\TitleTooShort;
 
-	/** @var string */
-	private $title;
+class Title
+{
+    /** @var string */
+    private $title;
 
-	/**
-	 * Title constructor.
-	 *
-	 * @param string $title
-	 *
-	 * @throws TitleTooShort
-	 */
-	public function __construct(string $title) {
+    /**
+     * Title constructor.
+     *
+     * @param string $title
+     *
+     * @throws TitleTooShort
+     */
+    public function __construct(string $title)
+    {
+        if (\mb_strlen($title) < 10) {
+            throw new TitleTooShort('Title too short');
+        }
+        $this->title = $title;
+    }
 
-		if (strlen( $title ) < 10) {
-			throw new TitleTooShort('Title too short');
-		}
-		$this->title = $title;
-	}
+    public function isEqual(self $title)
+    {
+        return (string) $title === $this->__toString();
+    }
 
-	public function isEqual(Title $title) {
-		return (string)$title === $this->__toString();
-	}
+    public function __toString()
+    {
+        return $this->title;
+    }
 
-	public function __toString() {
-
-		return $this->title;
-	}
+    private function __clone()
+    {
+    }
 }
