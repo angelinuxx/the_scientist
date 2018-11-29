@@ -1,34 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Domain\Article;
 
 use LaravelDay\Article\Article;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ArticleTest extends TestCase {
+class ArticleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @test
+     *
+     * @throws \Exception
+     */
+    public function shouldCreateAnArticle()
+    {
+        $id = 1;
+        $title = 'Questo è un titolo';
+        $body = 'Questo è un body';
+        $creationDate = new \DateTimeImmutable();
 
-	/**
-	 * A basic test example.
-	 *
-	 * @test
-	 *
-	 * @return void
-	 * @throws \Exception
-	 */
-	public function shouldCreateAnArticle() {
+        $article = new Article($id, $title, $body, $creationDate);
 
-		$id = 1;
-		$title = 'Questo è un titolo';
-		$body = 'Questo è un body';
-		$creationDate = new \DateTimeImmutable();
-
-		$article = new Article($id, $title, $body, $creationDate);
-
-		$this->assertSame( $id, $article->getId());
-		$this->assertSame( $title, $article->getTitle());
-		$this->assertSame( $body, $article->getBody());
-		$this->assertSame( $creationDate, $article->getCreationDate());
-	}
+        $this->assertSame($id, $article->getId());
+        $this->assertSame($title, $article->getTitle());
+        $this->assertSame($body, $article->getBody());
+        $this->assertSame($creationDate, $article->getCreationDate());
+    }
 }

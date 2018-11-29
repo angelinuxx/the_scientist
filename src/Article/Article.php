@@ -15,14 +15,14 @@ final class Article
     /** @var int */
     private $id;
 
-	/**
-	 * Article constructor.
-	 *
-	 * @param int                $id
-	 * @param string             $title
-	 * @param string             $body
-	 * @param \DateTimeImmutable $creationDate
-	 */
+    /**
+     * Article constructor.
+     *
+     * @param int                $id
+     * @param string             $title
+     * @param string             $body
+     * @param \DateTimeImmutable $creationDate
+     */
     public function __construct(int $id, string $title, string $body, \DateTimeImmutable $creationDate)
     {
         $this->title = $title;
@@ -31,13 +31,13 @@ final class Article
         $this->id = $id;
     }
 
-	/**
-	 * @return int
-	 */
-	public function getId(): int {
-
-		return $this->id;
-	}
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * @return string
